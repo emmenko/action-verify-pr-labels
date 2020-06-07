@@ -1,6 +1,6 @@
 {
   "name": "action-verify-pr-labels",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A GitHub Action to verify that at least one label is assigned to a Pull Request.",
   "license": "MIT",
   "private": true,
