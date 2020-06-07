@@ -2,27 +2,8 @@
   "name": "action-verify-pr-labels",
   "version": "1.0.0",
   "description": "A GitHub Action to verify that at least one label is assigned to a Pull Request.",
-  "bugs": "https://github.com/emmenko/action-verify-pr-labels/issues",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/emmenko/action-verify-pr-labels.git"
-  },
-  "keywords": [
-    "github action",
-    "labels"
-  ],
   "license": "MIT",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "action.yml",
-    "index.js",
-    "LICENSE",
-    "package.json",
-    "README.md"
-  ],
+  "private": true,
   "dependencies": {
     "@actions/core": "1.2.4",
     "@actions/github": "2.2.0"
