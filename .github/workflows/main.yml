@@ -21,3 +21,20 @@ jobs:
         uses: ./
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
+
+  git_log:
+    name: Test git log
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Git log
+        run: |
+          git log origin/${{ github.base_ref }}..${{ github.head_ref }} \
+            --pretty=format:'%ae'
+
