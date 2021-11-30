@@ -37,10 +37,7 @@ jobs:
 
       - name: Git log
         run: |
-          echo "git log"
-          git log
-
-          echo "git log revision"
-          git log refs/remotes/origin/${{ github.base_ref }}..+refs/heads/${{ github.head_ref }} \
+          git log \
+            refs/remotes/origin/${{ github.base_ref }}.. \
             --pretty=format:'%ae'
 
