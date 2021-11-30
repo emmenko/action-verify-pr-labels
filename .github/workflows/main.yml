@@ -1,8 +1,7 @@
 name: Verify Pull Request Labels
 
-on:
-  pull_request:
-    types: [ready_for_review, review_requested, labeled, unlabeled]
+on: [pull_request]
+    # types: [ready_for_review, review_requested, labeled, unlabeled]
 
 jobs:
   verify_pr_labels:
@@ -14,10 +13,41 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install github actions dependencies
-        uses: bahmutov/npm-install@v1.6.2
+      - name: Use Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Verify Pull Request Labels
         uses: ./
         with:
           github-token: '${{ secrets.GITHUB_TOKEN }}'
+
+  git_log:
+    name: Test git log
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check authors
+        run: |
+
+          git branch -a
+          ./check-authors.mjs .github/workflows/main.yml
+
