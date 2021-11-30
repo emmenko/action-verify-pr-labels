@@ -46,5 +46,8 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Check authors
-        run: ./check-authors.mjs .github/workflows/main.yml
+        run: |
+
+          git branch -a
+          ./check-authors.mjs .github/workflows/main.yml
 
