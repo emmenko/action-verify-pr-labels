@@ -8,6 +8,9 @@ if (!filePath) {
   throw new Error("Missing file path argument");
 }
 
+console.log('GITHUB_REF_NAME', process.env.GITHUB_REF_NAME)
+console.log('GITHUB_HEAD_REF', process.env.GITHUB_HEAD_REF)
+console.log('GITHUB_BASE_REF', process.env.GITHUB_BASE_REF)
 const authorizedUsers = ["nicola.molinari@commercetools.com"];
 
 const outputMergeBase = execSync("git merge-base master nm-git-log", {
